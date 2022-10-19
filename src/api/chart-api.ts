@@ -1,4 +1,5 @@
 import { ChartWidget, MouseEventParamsImpl, MouseEventParamsImplSupplier } from '../gui/chart-widget';
+import { PaneWidget } from '../gui/pane-widget';
 
 import { assert, ensureDefined } from '../helpers/assertions';
 import { Delegate } from '../helpers/delegate';
@@ -264,6 +265,18 @@ export class ChartApi implements IChartApi, DataUpdatesConsumer<SeriesType> {
 		return res;
 	}
 
+	public removePane(index: number): void {
+		this._chartWidget.model().removePane(index);
+	}
+
+	public swapPane(first: number, second: number): void {
+		this._chartWidget.model().swapPane(first, second);
+	}
+
+	public getPaneElements(): HTMLElement[] {
+		return this._chartWidget.paneWidgets().map((paneWidget: PaneWidget) => paneWidget.getPaneCell());
+	}
+
 	private _sendUpdateToChart(update: DataUpdateResponse): void {
 		const model = this._chartWidget.model();
 
@@ -291,6 +304,7 @@ export class ChartApi implements IChartApi, DataUpdatesConsumer<SeriesType> {
 			time: param.time as Time | undefined,
 			logical: param.index as Logical | undefined,
 			point: param.point,
+			paneIndex: param.paneIndex,
 			hoveredSeries,
 			hoveredMarkerId: param.hoveredObject,
 			seriesData,
