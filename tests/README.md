@@ -22,8 +22,6 @@ The unit tests can be run using the following command:
 
 which is equivalent to `mocha tests/unittests/**/*.spec.ts`
 
-The unit tests form part of the `npm run verify` command which should be run before commiting to the repo.
-
 ## End-to-end (e2e) Tests
 
 There are several e2e tests which simulate the usage of the library within a browser. Each of the tests listed below make use of Puppeteer to automate this process.
