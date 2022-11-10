@@ -87,13 +87,10 @@
     "typescript": "4.6.2"
   },
   "scripts": {
-    "postinstall": "npm run install-hooks",
-    "install-hooks": "node scripts/githooks/install.js",
     "clean": "rimraf lib/ dist/",
     "bundle-dts": "tsc --noEmit --allowJs dts-config.js && dts-bundle-generator --config dts-config.js",
     "tsc": "ttsc -p tsconfig.prod.json",
     "tsc-watch": "npm run tsc -- --watch --preserveWatchOutput",
-    "tsc-verify": "tsc -b tsconfig.composite.json",
     "lint": "npm-run-all -p lint:**",
     "lint:eslint": "eslint --format=unix ./",
     "lint:md": "markdownlint -i \"**/node_modules/**\" -i \"**/website/docs/api/**\" -i \"**/website/versioned_docs/**/api/**\" \"**/*.md\"",
