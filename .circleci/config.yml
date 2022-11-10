@@ -103,7 +103,6 @@ jobs:
       - checkout-with-deps
       # make sure that the project is compiled successfully with composite projects
       # so we don't have cyclic deps between projects and wrong imports
-      - run: npm run tsc-verify
       - run: npm run build:prod
       - persist_to_workspace:
           root: ./
