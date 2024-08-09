@@ -99,7 +99,7 @@
     "check-markdown-links": "node scripts/check-markdown-links.js",
     "rollup": "rollup -c rollup.config.js",
     "rollup-watch": "npm run rollup -- --watch",
-    "build": "yarn npm-run-all tsc rollup bundle-dts",
+    "build": "yarn tsc && yarn rollup && yarn bundle-dts",
     "build:watch": "npm-run-all tsc -p tsc-watch rollup-watch",
     "build:prod": "cross-env NODE_ENV=production npm run build",
     "build:release": "cross-env BUILD_TAG=release npm run build:prod",
