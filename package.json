@@ -88,6 +88,7 @@
     "yargs": "~17.6.0"
   },
   "scripts": {
+    "postinstall": "tsc && bundle-dts",
     "clean": "rimraf lib/ dist/",
     "bundle-dts": "tsc --noEmit --allowJs dts-config.js && dts-bundle-generator --config dts-config.js",
     "tsc": "ttsc -p tsconfig.prod.json",
