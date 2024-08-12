@@ -1,7 +1,7 @@
 {
   "private": true,
   "version": "4.0.0",
-  "name": "lightweight-charts",
+  "name": "@pendle/lightweight-charts-fork",
   "author": "TradingView, Inc.",
   "license": "Apache-2.0",
   "description": "Financial lightweight charts built with HTML5 canvas",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tradingview/lightweight-charts.git"
+    "url": "git+https://github.com/tradingview/lightweight-charts.git"
   },
   "module": "dist/lightweight-charts.esm.production.js",
   "main": "index.js",
@@ -87,7 +87,6 @@
     "typescript": "4.6.2"
   },
   "scripts": {
-    "postinstall": "yarn build",
     "clean": "rimraf lib/ dist/",
     "bundle-dts": "tsc --noEmit --allowJs dts-config.js && dts-bundle-generator --config dts-config.js",
     "tsc": "ttsc -p tsconfig.prod.json",
@@ -99,7 +98,7 @@
     "check-markdown-links": "node scripts/check-markdown-links.js",
     "rollup": "rollup -c rollup.config.js",
     "rollup-watch": "npm run rollup -- --watch",
-    "build": "yarn tsc && yarn rollup && yarn bundle-dts",
+    "build": "npm-run-all tsc rollup bundle-dts",
     "build:watch": "npm-run-all tsc -p tsc-watch rollup-watch",
     "build:prod": "cross-env NODE_ENV=production npm run build",
     "build:release": "cross-env BUILD_TAG=release npm run build:prod",
@@ -109,5 +108,9 @@
     "test": "mocha tests/unittests/**/*.spec.ts",
     "prepare": "npm run build:prod"
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "homepage": "https://github.com/tradingview/lightweight-charts#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  }
 }
